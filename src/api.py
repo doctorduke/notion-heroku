@@ -88,7 +88,7 @@ def bing():
         if date is None:
             return redirect(daily_image_url(datetime.today().strftime('%Y-%m-%d')), code=302)
         else:
-            return redirect(daily_image_url(date, code=302))
+            return redirect(daily_image_url(date), code=302)
     except Exception as e:
         return str(e), 500
 
