@@ -84,7 +84,11 @@ def add(data_type, request):
 @app.route('/bing', methods=['GET'])
 def bing():
     try:
-        return redirect(daily_image_url(datetime.today().strftime('%Y-%m-%d')), code=302)
+        date = request.args.get('date')
+        if date is None:
+            return redirect(daily_image_url(datetime.today().strftime('%Y-%m-%d')), code=302)
+        else:
+            return redirect(daily_image_url(date, code=302)
     except Exception as e:
         return str(e), 500
 
